@@ -15,6 +15,7 @@ resource "databricks_job" "notebook_job" {
     }
   }
   max_concurrent_runs = 1
+  performance_target = "STANDARD"
   tags = {
     env = "testing"
   }
