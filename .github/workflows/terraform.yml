@@ -35,9 +35,9 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: terraform plan -input=false -var "databricks_host=$DATABRICKS_HOST" -var "databricks_token=$DATABRICKS_TOKEN"
 
-      - name: Terraform Apply
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-        run: terraform apply -auto-approve -input=false -var "databricks_host=$DATABRICKS_HOST" -var "databricks_token=$DATABRICKS_TOKEN"
+      # - name: Terraform Apply
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   env:
+      #     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      #   run: terraform apply -auto-approve -input=false -var "databricks_host=$DATABRICKS_HOST" -var "databricks_token=$DATABRICKS_TOKEN"
