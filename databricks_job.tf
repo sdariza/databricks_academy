@@ -8,7 +8,7 @@ resource "databricks_job" "notebook_job" {
   task {
     task_key = "hello_world"
     notebook_task {
-      notebook_path = ""
+      notebook_path = "/"
       base_parameters = {
         msg = "Hello world, this is my first lakeflow job with terraform!"
       }
