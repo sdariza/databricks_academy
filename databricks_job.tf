@@ -14,8 +14,19 @@ resource "databricks_job" "notebook_job" {
       }
     }
   }
+    task {
+    task_key = "custom_message"
+    notebook_task {
+      notebook_path = "/Workspace/Users/sdariza.certifications@gmail.com/TEST/hello_world"
+      base_parameters = {
+        msg = "Validating PR"
+      }
+    }
+    depends_on {
+        task_key = "hello_world"
+    }
+  }
   max_concurrent_runs = 1
-  performance_target = "STANDARD"
   tags = {
     env = "testing"
   }
