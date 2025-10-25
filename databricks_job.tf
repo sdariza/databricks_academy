@@ -14,7 +14,7 @@ resource "databricks_job" "notebook_job" {
       }
     }
   }
-    task {
+  task {
     task_key = "custom_message"
     notebook_task {
       notebook_path = "/Workspace/Users/sdariza.certifications@gmail.com/TEST/hello_world"
@@ -23,7 +23,7 @@ resource "databricks_job" "notebook_job" {
       }
     }
     depends_on {
-        task_key = "hello_world_testing"
+      task_key = "hello_world_testing"
     }
   }
   max_concurrent_runs = 1
