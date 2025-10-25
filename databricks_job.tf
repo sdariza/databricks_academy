@@ -23,7 +23,7 @@ resource "databricks_job" "notebook_job" {
       }
     }
     depends_on {
-      task_key = "hello_world_testing"
+      task_key = "hello_world"
     }
   }
   max_concurrent_runs = 1
