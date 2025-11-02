@@ -40,13 +40,26 @@ resource "databricks_job" "notebook_job" {
       task_key = "hello_world"
     }
   }
+  task {
+    task_key = "custom_message 2"
+    notebook_task {
+      source        = "GIT"
+      notebook_path = "notebooks/hello"
+      base_parameters = {
+        msg = "Validating PR"
+      }
+    }
+    depends_on {
+      task_key = "hello_world"
+    }
+  }
   max_concurrent_runs = 1
   tags = {
     env = "testing"
   }
   git_source {
-    url = databricks_repo.git_repo.url
-    branch = "test"
+    url      = databricks_repo.git_repo.url
+    branch   = "test"
     provider = "gitHub"
   }
 }
