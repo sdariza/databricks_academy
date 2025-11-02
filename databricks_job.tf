@@ -41,7 +41,7 @@ resource "databricks_job" "notebook_job" {
     }
   }
   task {
-    task_key = "custom_message 2"
+    task_key = "custom_message_2"
     notebook_task {
       source        = "GIT"
       notebook_path = "notebooks/hello"
