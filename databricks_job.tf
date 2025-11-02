@@ -1,6 +1,6 @@
 resource "databricks_repo" "git_repo" {
   url    = "https://github.com/sdariza/databricks_academy.git"
-  branch = "test"
+  branch = "main"
 }
 
 resource "databricks_git_credential" "git_credential" {
@@ -55,11 +55,11 @@ resource "databricks_job" "notebook_job" {
   }
   max_concurrent_runs = 1
   tags = {
-    env = "testing"
+    env = "production"
   }
   git_source {
     url      = databricks_repo.git_repo.url
-    branch   = "test"
+    branch   = "main"
     provider = "gitHub"
   }
 }
