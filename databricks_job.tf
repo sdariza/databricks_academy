@@ -1,14 +1,3 @@
-resource "databricks_repo" "git_repo" {
-  url    = "https://github.com/sdariza/databricks_academy.git"
-  branch = "main"
-}
-
-resource "databricks_git_credential" "git_credential" {
-  git_username          = "sdariza"
-  git_provider          = "gitHub"
-  personal_access_token = var.git_personal_access_token
-}
-
 resource "databricks_job" "notebook_job" {
   name = "My first notebook job with terraform"
   schedule {
@@ -19,32 +8,16 @@ resource "databricks_job" "notebook_job" {
   task {
     task_key = "hello_world"
     notebook_task {
-      notebook_path = "notebooks/hello"
-      source        = "GIT"
+      notebook_path = "/Workspace/Users/sdariza.certifications@gmail.com/TEST/hello_world"
       base_parameters = {
         msg = "Hello world, this is my first lakeflow job with terraform!"
       }
     }
-
   }
   task {
     task_key = "custom_message"
     notebook_task {
-      source        = "GIT"
-      notebook_path = "notebooks/hello"
-      base_parameters = {
-        msg = "Validating PR"
-      }
-    }
-    depends_on {
-      task_key = "hello_world"
-    }
-  }
-  task {
-    task_key = "custom_message 2"
-    notebook_task {
-      source        = "GIT"
-      notebook_path = "notebooks/hello"
+      notebook_path = "/Workspace/Users/sdariza.certifications@gmail.com/TEST/hello_world"
       base_parameters = {
         msg = "Validating PR"
       }
@@ -55,11 +28,6 @@ resource "databricks_job" "notebook_job" {
   }
   max_concurrent_runs = 1
   tags = {
-    env = "production"
-  }
-  git_source {
-    url      = databricks_repo.git_repo.url
-    branch   = "main"
-    provider = "gitHub"
+    env = "testing"
   }
 }

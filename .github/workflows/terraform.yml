@@ -31,7 +31,6 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        if: github.event.pull_request.draft == false
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
