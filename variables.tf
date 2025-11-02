@@ -10,19 +10,8 @@ variable "databricks_token" {
   sensitive   = true
 }
 
-variable "git_username" {
-  description = "git username"
-  type        = string
-  sensitive   = true
-}
-
 variable "git_personal_access_token" {
   description = "token for github"
   type        = string
   sensitive   = true
-}
-
-variable "git_hub_url" {
-  description = "repo url"
-  type = string
 }

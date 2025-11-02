@@ -33,7 +33,8 @@ jobs:
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-        run: terraform plan -input=false -var "databricks_host=$DATABRICKS_HOST" -var "databricks_token=$DATABRICKS_TOKEN"
+          TF_VAR_git_personal_access_token: ${{ secrets.TF_VAR_git_personal_access_token }}
+        run: terraform plan
 
       # - name: Terraform Apply
       #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'

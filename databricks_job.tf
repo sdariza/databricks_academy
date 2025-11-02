@@ -4,7 +4,7 @@ resource "databricks_repo" "git_repo" {
 }
 
 resource "databricks_git_credential" "git_credential" {
-  git_username          = var.git_username
+  git_username          = "sdariza"
   git_provider          = "gitHub"
   personal_access_token = var.git_personal_access_token
 }
