@@ -1,1 +1,1 @@
-# databricks_academy
+# databricks
